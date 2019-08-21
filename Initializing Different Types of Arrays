@@ -1,0 +1,670 @@
+#Copy and paste from Jupyter notebook
+
+import numpy as np
+
+
+
+
+In [5]:
+
+
+
+1
+# All 0s matrix
+2
+print(np.zeros((5)))
+3
+print(np.zeros((2,3,3)))
+
+
+
+
+
+[0. 0. 0. 0. 0.]
+[[[0. 0. 0.]
+  [0. 0. 0.]
+  [0. 0. 0.]]
+
+ [[0. 0. 0.]
+  [0. 0. 0.]
+  [0. 0. 0.]]]
+In [6]:
+
+
+
+1
+# All 1s matrix
+2
+print(np.ones((5), dtype='bool'))
+3
+print(np.ones((2,3,3)))
+
+
+
+
+
+[ True  True  True  True  True]
+[[[1. 1. 1.]
+  [1. 1. 1.]
+  [1. 1. 1.]]
+
+ [[1. 1. 1.]
+  [1. 1. 1.]
+  [1. 1. 1.]]]
+In [7]:
+
+
+
+1
+# Any other number
+2
+np.full((2,2), 99, dtype='float32')
+
+
+
+
+Out[7]:
+array([[99., 99.],
+       [99., 99.]], dtype=float32)
+In [9]:
+
+
+
+1
+# Any other number (full_like)
+2
+a = np.array([[1,2,3,4,5,6],[7,8,9,10,11,12]])
+3
+print(a)
+4
+b = np.full_like(a, 4)
+5
+print(b)
+
+
+
+
+
+[[ 1  2  3  4  5  6]
+ [ 7  8  9 10 11 12]]
+[[4 4 4 4 4 4]
+ [4 4 4 4 4 4]]
+In [13]:
+
+
+
+1
+# Random decimal numbers
+2
+print(np.random.rand(4, 2))
+3
+print("Space between arrays")
+4
+print(np.random.random([4,2]))
+
+
+
+
+
+[[0.16270604 0.65334215]
+ [0.59990449 0.34988547]
+ [0.30157781 0.11988935]
+ [0.97983718 0.48749682]]
+Space between arrays
+[[0.91704625 0.13737549]
+ [0.88054547 0.86537426]
+ [0.51762455 0.09390751]
+ [0.28867727 0.2522397 ]]
+In [14]:
+
+
+
+1
+np.random.random_sample(a.shape)
+
+
+
+
+Out[14]:
+array([[0.73334603, 0.54984924, 0.24961068, 0.1847081 , 0.27089706,
+        0.01404582],
+       [0.52724098, 0.96010959, 0.58764542, 0.92109161, 0.84350311,
+        0.71058721]])
+In [16]:
+
+
+
+1
+# Random Integer value
+2
+np.random.randint(-10,8, size=(2,4,5))
+
+
+
+
+Out[16]:
+array([[[ -9,  -2,   5,  -5,  -7],
+        [  5,   0,  -1,   7,  -8],
+        [  1,  -3,  -5,   0,  -7],
+        [ -7,  -7,   7,   1,   7]],
+
+       [[ -1,   2,  -4,  -5,   5],
+        [ -1,   4,   2,   1,  -2],
+        [ -9,   6,   6,  -5,  -4],
+        [-10,   7,   7,   0,  -8]]])
+In [17]:
+
+
+
+1
+# Identity matrix
+2
+np.identity(3)
+
+
+
+
+Out[17]:
+array([[1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.]])
+In [21]:
+
+
+
+1
+# Repeat an array
+2
+arr = np.array([[1,2,3]])
+3
+r1 = np.repeat(arr, 3, axis=0)
+4
+print(r1)
+
+
+
+
+
+[[1 2 3]
+ [1 2 3]
+ [1 2 3]]
+In [37]:
+
+
+
+1
+# Challenge array
+2
+"""
+3
+1 1 1 1 1
+4
+1 0 0 0 1
+5
+1 0 9 0 1
+6
+1 0 0 0 1
+7
+1 1 1 1 1
+8
+"""
+9
+a = np.array([[1, 1, 1, 1, 1]])
+10
+a = np.repeat(a, 5, axis=0)
+11
+a[:, 1] = [1, 0, 0, 0, 1]
+12
+a[:, 2] = a[:, 1]
+13
+a[:, 3] = a[:, 1]
+14
+a[2, 2] = 9
+15
+print(a)
+
+
+
+
+
+[[1. 1. 1. 1. 1.]
+ [1. 0. 0. 0. 1.]
+ [1. 0. 9. 0. 1.]
+ [1. 0. 0. 0. 1.]
+ [1. 1. 1. 1. 1.]]
+In [43]:
+
+
+
+1
+# Challenge array by Youtube presenter
+2
+output = np.ones((5,5))
+3
+print(output)
+4
+z = np.zeros((3,3))
+5
+z[1, 1] = 9
+6
+print(z)
+7
+# Both ways of selecting the end column.
+8
+output[1:4, 1:-1] = z
+9
+print(output)
+
+
+
+
+
+[[1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]
+ [1. 1. 1. 1. 1.]]
+[[0. 0. 0.]
+ [0. 9. 0.]
+ [0. 0. 0.]]
+[[1. 1. 1. 1. 1.]
+ [1. 0. 0. 0. 1.]
+ [1. 0. 9. 0. 1.]
+ [1. 0. 0. 0. 1.]
+ [1. 1. 1. 1. 1.]]
+In [48]:
+
+
+
+1
+a = np.array([1, 2, 3])
+2
+b = a
+3
+b[0] = 100
+4
+print(a)
+5
+# above shows b is referencing the same memory as a.  
+6
+a = np.array([1, 2, 3])
+7
+b = a.copy()
+8
+b[0] = 100
+9
+print(a)
+
+
+
+
+
+[100   2   3]
+[1 2 3]
+In [53]:
+
+
+
+1
+a = np.array([1,2,3,4])
+2
+print(a)
+3
+print(a + 2)
+4
+print(a - 2)
+5
+print(a * 2)
+6
+print(a % 2)
+7
+print(a / 2)
+8
+print(a ** 2)
+9
+b = np.array([1, 0, 1, 0])
+10
+print(a + b)
+
+
+
+
+
+[1 2 3 4]
+[3 4 5 6]
+[-1  0  1  2]
+[2 4 6 8]
+[1 0 1 0]
+[0.5 1.  1.5 2. ]
+[ 1  4  9 16]
+[2 2 4 4]
+In [54]:
+
+
+
+1
+# Take the sine, cosine and tangent
+2
+print(np.sin(a))
+3
+print(np.cos(a))
+4
+print(np.tan(a))
+
+
+
+
+
+[ 0.84147098  0.90929743  0.14112001 -0.7568025 ]
+[ 0.54030231 -0.41614684 -0.9899925  -0.65364362]
+[ 1.55740772 -2.18503986 -0.14254654  1.15782128]
+
+Linear Algebra
+In [58]:
+
+
+
+1
+a = np.ones((2,3))
+2
+print(a)
+3
+​
+4
+b = np.full((3,2), 2)
+5
+print(b)
+6
+np.matmul(a, b)
+
+
+
+
+
+[[1. 1. 1.]
+ [1. 1. 1.]]
+[[2 2]
+ [2 2]
+ [2 2]]
+
+Out[58]:
+array([[6., 6.],
+       [6., 6.]])
+In [67]:
+
+
+
+1
+c = np.identity(3)
+2
+print(c)
+3
+print(np.linalg.det(c))
+
+
+
+
+
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+1.0
+
+Statistics
+In [77]:
+
+
+
+1
+stats = np.array([[1,15,3], [4,5,6]])
+2
+stats
+
+
+
+
+Out[77]:
+array([[ 1, 15,  3],
+       [ 4,  5,  6]])
+In [81]:
+
+
+
+1
+# smallest value in array
+2
+print(np.min(stats))
+3
+# largest value in array
+4
+print(np.max(stats))
+5
+# largest value per row
+6
+print(np.max(stats, axis=1))
+7
+# small value per column
+8
+print(np.min(stats, axis=0))
+9
+# sum of all value
+10
+print(np.sum(stats))
+
+
+
+
+
+1
+15
+[15  6]
+[1 5 3]
+34
+
+Reorganizing Array
+In [84]:
+
+
+
+1
+before = np.array([[1,2,3,4], [5,6,7,8]])
+2
+print(before)
+3
+print(before.shape)
+4
+after = before.reshape((8,1))
+5
+print(after)
+
+
+
+
+
+[[1 2 3 4]
+ [5 6 7 8]]
+(2, 4)
+[[1]
+ [2]
+ [3]
+ [4]
+ [5]
+ [6]
+ [7]
+ [8]]
+In [90]:
+
+
+
+1
+# Vertically stacking vectors
+2
+v1 = np.zeros(5)
+3
+v2 = np.ones(5)
+4
+v3 = np.vstack([v1, v2])
+5
+print(v3)
+6
+v4 = np.full((5), 4)
+7
+v3 = np.vstack([v1, v2, v4])
+8
+print(v3)
+
+
+
+
+
+[[0. 0. 0. 0. 0.]
+ [1. 1. 1. 1. 1.]]
+[[0. 0. 0. 0. 0.]
+ [1. 1. 1. 1. 1.]
+ [4. 4. 4. 4. 4.]]
+In [93]:
+
+
+
+1
+# Horizontal stack
+2
+v3 = np.hstack((v1, v4, v2))
+3
+v3
+
+
+
+
+Out[93]:
+array([0., 0., 0., 0., 0., 4., 4., 4., 4., 4., 1., 1., 1., 1., 1.])
+
+Miscellaneous
+Load Data From File
+In [97]:
+
+
+
+1
+#pull data from file
+2
+filedata = np.genfromtxt('data.txt', delimiter=',')
+3
+filedata = filedata.astype('int32')
+4
+filedata
+
+
+
+
+Out[97]:
+array([[  1,  13,  21,  11, 196,  75,   4,   3,  34,   6,   7,   8,   0,
+          1,   2,   3,   4,   5],
+       [  3,  42,  12,  33, 766,  75,   4,  55,   6,   4,   3,   4,   5,
+          6,   7,   0,  11,  12],
+       [  1,  22,  33,  11, 999,  11,   2,   1,  78,   0,   1,   2,   9,
+          8,   7,   1,  76,  88]])
+
+Boolean Masking and Advanced Indexing
+In [98]:
+
+
+
+1
+# print true false of each cell based on condition
+2
+filedata > 50
+
+
+
+
+Out[98]:
+array([[False, False, False, False,  True,  True, False, False, False,
+        False, False, False, False, False, False, False, False, False],
+       [False, False, False, False,  True,  True, False,  True, False,
+        False, False, False, False, False, False, False, False, False],
+       [False, False, False, False,  True, False, False, False,  True,
+        False, False, False, False, False, False, False,  True,  True]])
+In [99]:
+
+
+
+1
+# print value of each cell with a truthful result
+2
+filedata[filedata > 50]
+
+
+
+
+Out[99]:
+array([196,  75, 766,  75,  55, 999,  78,  76,  88])
+In [100]:
+
+
+
+1
+## You can index with a list in numpy
+2
+a = np.array([1,2,3,4,5,6,7,8,9])
+3
+a[[1,2,8]]
+
+
+
+
+Out[100]:
+array([2, 3, 9])
+In [101]:
+
+
+
+1
+# are any of the values in nth column across all rows 
+2
+# greater than 50?  
+3
+np.any(filedata > 50, axis=0)
+
+
+
+
+Out[101]:
+array([False, False, False, False,  True,  True, False,  True,  True,
+       False, False, False, False, False, False, False,  True,  True])
+In [102]:
+
+
+
+1
+# are all of the values in the nth column greater than 50?
+2
+np.all(filedata > 50, axis=0)
+
+
+
+
+Out[102]:
+array([False, False, False, False,  True, False, False, False, False,
+       False, False, False, False, False, False, False, False, False])
+In [105]:
+
+
+
+1
+# true/false values being both greater than 50
+2
+# and less than 100 ... NOT!
+3
+(~(filedata > 50) & (filedata < 100))
+
+
+
+
+Out[105]:
+array([[ True,  True,  True,  True, False, False,  True,  True,  True,
+         True,  True,  True,  True,  True,  True,  True,  True,  True],
+       [ True,  True,  True,  True, False, False,  True, False,  True,
+         True,  True,  True,  True,  True,  True,  True,  True,  True],
+       [ True,  True,  True,  True, False,  True,  True,  True, False,
+         True,  True,  True,  True,  True,  True,  True, False, False]])
