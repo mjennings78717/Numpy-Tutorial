@@ -1,0 +1,289 @@
+#Input and output from Jupyter notebook
+1
+import numpy as np
+2
+import sys
+
+
+
+
+In [7]:
+
+
+
+1
+a = np.array([1,2,3], dtype='int16')
+2
+print(a)
+
+
+
+
+
+[1 2 3]
+In [8]:
+
+
+
+1
+b = np.array([[9.0,8.0,7.0],[6.0,5.0,4.0]])
+2
+print(b)
+
+
+
+
+
+[[9. 8. 7.]
+ [6. 5. 4.]]
+In [9]:
+
+
+
+1
+# Get Dimension
+2
+a.ndim
+
+
+
+
+Out[9]:
+1
+In [10]:
+
+
+
+1
+# Get Shape
+2
+b.shape
+
+
+
+
+Out[10]:
+(2, 3)
+In [11]:
+
+
+
+1
+# Get Type
+2
+a.dtype
+
+
+
+
+Out[11]:
+dtype('int16')
+In [12]:
+
+
+
+1
+# Get Size
+2
+a.itemsize
+
+
+
+
+Out[12]:
+2
+In [17]:
+
+
+
+1
+# Get total size
+2
+print(a.nbytes)
+3
+print("Hi")
+4
+print(b.nbytes)
+
+
+
+
+
+6
+Hi
+48
+
+Accessing / Changing specific elements, rows, columns, etc
+In [21]:
+
+
+
+1
+a = np.array([[1,2,3,4,5,6,7],[8,9,10,11,12,13,14]])
+2
+print(a)
+
+
+
+
+
+[[ 1  2  3  4  5  6  7]
+ [ 8  9 10 11 12 13 14]]
+In [22]:
+
+
+
+1
+# Get a specific element [row, column]
+2
+a[1, -3]
+
+
+
+
+Out[22]:
+12
+In [23]:
+
+
+
+1
+# Get a specific row
+2
+a[0, :]
+
+
+
+
+Out[23]:
+array([1, 2, 3, 4, 5, 6, 7])
+In [24]:
+
+
+
+1
+# Get a specific column
+2
+a[:, 2]
+
+
+
+
+Out[24]:
+array([ 3, 10])
+In [31]:
+
+
+
+1
+# Getting a little fancier [arrayIndex, ...
+2
+# startIndex:endIndex:stepSize]
+3
+a[1, 1:6:2]
+
+
+
+
+Out[31]:
+array([ 9, 11, 13])
+In [33]:
+
+
+
+1
+a[0, 1:-1:2]
+
+
+
+
+Out[33]:
+array([2, 4, 6])
+In [34]:
+
+
+
+1
+# Replace a specific cell's value
+2
+a[1,5] = 20
+3
+print(a)
+
+
+
+
+
+[[ 1  2  3  4  5  6  7]
+ [ 8  9 10 11 12 20 14]]
+In [38]:
+
+
+
+1
+# Replace a column's value
+2
+a[:, 2] = [1, 63]
+3
+print(a)
+
+
+
+
+
+[[ 1  2  1  4  5  6  7]
+ [ 8  9 63 11 12 20 14]]
+In [39]:
+
+
+
+1
+# 3-d example
+2
+b = np.array([[[1,2],[3,4]], [[5,6], [7,8]]])
+3
+print(b)
+
+
+
+
+
+[[[1 2]
+  [3 4]]
+
+ [[5 6]
+  [7 8]]]
+In [41]:
+
+
+
+1
+# Get specific element (work outside in)
+2
+b[0, 1, 1]
+
+
+
+
+Out[41]:
+4
+In [42]:
+
+
+
+1
+# replace
+2
+b[:, 1, :] = [[9,9], [8,8]]
+3
+print(b)
+
+
+
+
+
+[[[1 2]
+  [9 9]]
+
+ [[5 6]
+  [8 8]]]
